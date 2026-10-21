@@ -5,9 +5,9 @@
 //   g++ main.cpp -o eduverse
 //   ./eduverse
 
-#include <iostream>   // for cout (printing on screen)
-#include <string>     // for string (text)
-#include <queue>      // for queue (first come, first served line)
+#include <iostream>   // cout (print on screen)
+#include <string>     // string (text)
+#include <queue>      // queue (first come, first served line)
 using namespace std;
 
 
@@ -22,39 +22,23 @@ protected:
     string name;                          // the person's name
 
 public:
-    // Constructor: runs when a User is created, saves the name
-    User(string n)
-    {
-        name = n;
-    }
+    User(string n) { name = n; }          // constructor: saves the name
+    virtual ~User() {}                    // destructor (needed for virtual classes)
 
-    // Destructor: runs when the object is removed (needed for virtual classes)
-    virtual ~User() {}
+    string getName() { return name; }
 
-    // Returns the person's name
-    string getName()
-    {
-        return name;
-    }
-
-    // "= 0" means: User does not define the role itself.
+    // "= 0" means: User does not write role() itself.
     // Student and Faculty MUST write their own role().
     virtual string role() = 0;
 };
-
 
 // Student is a "child" of User (it gets name and getName for free)
 class Student : public User
 {
 public:
     Student(string n) : User(n) {}        // send the name up to User
-
-    string role()
-    {
-        return "student";
-    }
+    string role() { return "student"; }
 };
-
 
 // Faculty is also a "child" of User
 class Faculty : public User
@@ -63,20 +47,9 @@ private:
     string room;                          // the one room this faculty teaches in
 
 public:
-    Faculty(string n, string r) : User(n)
-    {
-        room = r;
-    }
-
-    string role()
-    {
-        return "faculty";
-    }
-
-    string getRoom()
-    {
-        return room;
-    }
+    Faculty(string n, string r) : User(n) { room = r; }
+    string role() { return "faculty"; }
+    string getRoom() { return room; }
 };
 
 
@@ -92,11 +65,10 @@ private:
     int count;                            // how many people are inside right now
 
 public:
-    // Make a new empty room (count starts at 0)
     Room(string n = "")
     {
         name = n;
-        count = 0;
+        count = 0;                        // a new room is empty
     }
 
     // Add a person at the end of the list
@@ -109,20 +81,16 @@ public:
     // Remove a person from the list
     void leave(string user)
     {
-        // Step 1: look for the person
         for (int i = 0; i < count; i++)
         {
             if (members[i] == user)
             {
-                // Step 2: found! Move everyone after them one place left
-                //         (this fills the empty gap)
+                // found! move everyone after them one place left
                 for (int j = i; j < count - 1; j++)
                 {
                     members[j] = members[j + 1];
                 }
-
-                // Step 3: one less person inside
-                count--;
+                count--;                  // one less person inside
                 return;                   // done, stop searching
             }
         }
@@ -132,12 +100,10 @@ public:
     void show()
     {
         cout << name << " (" << count << " inside):";
-
         for (int i = 0; i < count; i++)
         {
             cout << " " << members[i];
         }
-
         cout << endl;
     }
 };
@@ -149,54 +115,45 @@ public:
 
 int main()
 {
-    // Create two rooms
+    // Two rooms
     Room pythonRoom("Python");
     Room javaRoom("Java");
 
-    // Create one faculty and two students
+    // One faculty and two students
     Faculty f("Faculty Python", "Python");
     Student s1("Student One");
     Student s2("Student Two");
 
-    // One list that holds all three people.
     // A User pointer can point to a Student or a Faculty.
-    User *people[] = { &f, &s1, &s2 };
-
-    // Print each person's name and role.
     // role() is virtual, so each object gives its OWN answer.
+    User *people[] = { &f, &s1, &s2 };
     for (User *u : people)
     {
         cout << u->getName() << " is a " << u->role() << endl;
     }
 
-    // QUEUE: students waiting in line to enter a room.
-    // First one in the line is the first one served.
+    // QUEUE: students waiting in line. First in line is served first.
     queue<string> requests;
-    requests.push(s1.getName());          // Student One joins the line
-    requests.push(s2.getName());          // Student Two joins the line
+    requests.push(s1.getName());
+    requests.push(s2.getName());
 
     // The faculty enters first, but only into their own room
     if (f.getRoom() == "Python")
     {
         pythonRoom.enter(f.getName());
     }
-    else
-    {
-        pythonRoom.enter("");
-    }
 
-    // Let the students in, one by one, in the order they asked
+    // Let the students in, in the order they asked
     while (!requests.empty())
     {
-        pythonRoom.enter(requests.front());   // look at the first student
-        requests.pop();                       // remove them from the line
+        pythonRoom.enter(requests.front());
+        requests.pop();
     }
 
-    // Show both rooms
     pythonRoom.show();
     javaRoom.show();
 
-    // Student One leaves the Python room, then show it again
+    // Student One leaves, then show again
     pythonRoom.leave(s1.getName());
     pythonRoom.show();
 
