@@ -1,7 +1,15 @@
+// Backend URL. GitHub Pages only hosts static files, so when the site is opened
+// from github.io the API calls must go to the deployed Node server instead.
+// Locally (npm start) it stays empty and the same server is used.
+// TODO: replace the URL below with your deployed backend (Render/Railway/etc.)
+const API_BASE = location.hostname.endsWith('github.io')
+    ? 'https://YOUR-BACKEND-URL.onrender.com'
+    : '';
+
 const MockCredentialStore = {
     students: [
         { id: '2510011214', password: '2510011214', profile: { id: 's1', name: '2510011214', role: 'student' } },
-        { id: '2510011514', password: '2510011514', profile: { id: 's2', name: '2510011514', role: 'student' } },
+        { id: '2510011214', password: '2510011214', profile: { id: 's2', name: '2510011514', role: 'student' } },
         { id: '2510011592', password: '2510011592', profile: { id: 's3', name: '2510011592', role: 'student' } },
         { id: '2510012706', password: '2510012706', profile: { id: 's4', name: '2510012706', role: 'student' } }
     ],
@@ -112,7 +120,7 @@ const State = {
     logout() {
         const token = this.token;
         if (token) {
-            fetch('/api/logout', { method: 'POST', headers: { 'x-token': token }, keepalive: true }).catch(() => {});
+            fetch(API_BASE + '/api/logout', { method: 'POST', headers: { 'x-token': token }, keepalive: true }).catch(() => {});
         }
         this.token = null;
         this.user = null;
@@ -325,7 +333,7 @@ const Login = {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Authenticating...';
             
-            fetch('/api/login', {
+            fetch(API_BASE + '/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username: idVal, password: pwdVal, role: currentRole })
@@ -604,7 +612,7 @@ const CampusWorld = {
             window.clearInterval(this.presenceTimer);
             this.presenceTimer = null;
             if (State.token) {
-                fetch('/api/presence/leave', {
+                fetch(API_BASE + '/api/presence/leave', {
                     method: 'POST',
                     headers: { 'x-token': State.token },
                     keepalive: true
@@ -617,7 +625,7 @@ const CampusWorld = {
         if (!State.token || this.presenceBusy || !this.canvas) return;
         this.presenceBusy = true;
         try {
-            const res = await fetch('/api/presence', {
+            const res = await fetch(API_BASE + '/api/presence', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'x-token': State.token },
                 body: JSON.stringify({
