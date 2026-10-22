@@ -180,7 +180,7 @@ const Navigation = {
         if(initLogic) initLogic();
     }
 };
-
+//Login 
 const Login = {
     getHTML() {
         return `
@@ -236,7 +236,7 @@ const Login = {
         const feedback = document.getElementById('auth-feedback');
         const submitBtn = document.getElementById('submit-btn');
         
-        // Tab switching
+        // Tab switching functionality
         tabs.forEach(tab => {
             tab.addEventListener('click', (e) => {
                 tabs.forEach(t => t.classList.remove('selected'));
@@ -1504,4 +1504,4 @@ document.addEventListener('DOMContentLoaded', () => {
     State.init();
     Navigation.init();
     Navigation.navigate('LOGIN');
-});
+});v
