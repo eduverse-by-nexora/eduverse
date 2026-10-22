@@ -60,7 +60,7 @@ function checkToken(req, res, next) {
   next();
 }
 
-// GET /api/me  (protected)
+// GET /api/me 
 app.get("/api/me", checkToken, (req, res) => {
   const u = req.user;
   res.json({ name: u.name, role: u.role, room: u.room });
