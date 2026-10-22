@@ -28,7 +28,7 @@
     margin: 0;  
     padding: 0;
 }
-
+/* styling */
 body {
     font-family: var(--font-main);
     background-color: var(--background);
