@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Tells the browser this is a modern HTML5 page. -->
+<html lang="en">
+<head>
+    <!-- HOW THE PAGE LOADS (step by step)
+         1. The browser downloads this file and reads it from top to bottom.
+         2. The <head> is read first: settings, title, font and stylesheet.
+         3. Then the <body> is read: it only has one empty box (#app).
+         4. Last, script.js is downloaded and run. It builds the whole page
+            inside that empty box. -->
+
+    <!-- Use UTF-8 so emojis and special characters show correctly. -->
+    <meta charset="UTF-8">
+
+    <!-- Makes the page fit the screen width on phones instead of being zoomed out. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Text shown on the browser tab. -->
+    <title>Eduverse - Virtual Interactive Learning Room</title>
+
+    <!-- Loads the "Inter" font from Google Fonts (needs internet). -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Loads style.css. The browser downloads it before showing the page, so the
+         elements that script.js creates later are already styled when they appear
+         (the CSS class names match the class names used inside script.js). -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- The only element in the page at first: an empty box.
+         script.js finds it with document.getElementById('app') and fills it with
+         the Login screen. After a successful login it empties the same box and
+         fills it with the Campus screen. So there is only one HTML page, and
+         the screens change inside this box. -->
+    <div id="app"></div>
+
+    <!-- script.js is placed at the END of the body on purpose, so that
+         <div id="app"> already exists when the script starts.
+         What it does, in order:
+           1. Waits for the page to finish loading (DOMContentLoaded).
+           2. Runs Navigation.navigate('LOGIN') to draw the login form into #app.
+           3. After login, draws the campus (a canvas plus HUD buttons) into #app
+              and starts talking to the server (/api/login, /api/presence, ...). -->
+    <script src="script.js"></script>
+</body>
+</html>
