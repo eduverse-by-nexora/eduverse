@@ -1,0 +1,180 @@
+{
+  "rooms": [
+    {
+      "code": "TCS-308",
+      "name": "Logic Design and Computer Organization",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "TCS-302",
+      "name": "Data Structures with C",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "TCS-307",
+      "name": "Object Oriented Programming with C++",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "TMA-316",
+      "name": "Discrete Structures and Combinatorics",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "TOC-301",
+      "name": "Probability and Statistics (Audit Course)",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "XCS-301",
+      "name": "Career Skills-I / PEPCC (QA/Verbal/Soft Skills)",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "UHV-301",
+      "name": "UHV-II",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "TCS-351",
+      "name": "Fundamentals of Cloud Computing and Big Data",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "TCS-392",
+      "name": "Introduction to Cryptography",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "TCS-331",
+      "name": "Fundamentals of IoT",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "TCS-340",
+      "name": "Python Programming",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "TCS-332",
+      "name": "Fundamentals of Information Security and Blockchain",
+      "type": "classroom",
+      "seats": 24
+    },
+    {
+      "code": "LIBRARY",
+      "name": "Library",
+      "type": "library",
+      "seats": 0
+    }
+  ],
+  "users": [
+    {
+      "name": "2510011214",
+      "role": "student",
+      "room": null,
+      "userId": "2510011214"
+    },
+    {
+      "name": "2510011514",
+      "role": "student",
+      "room": null,
+      "userId": "2510011514"
+    },
+    {
+      "name": "2510011592",
+      "role": "student",
+      "room": null,
+      "userId": "2510011592"
+    },
+    {
+      "name": "2510012706",
+      "role": "student",
+      "room": null,
+      "userId": "2510012706"
+    },
+    {
+      "userId": "1516",
+      "role": "faculty",
+      "name": "Dr. Sharma",
+      "room": "TCS-308"
+    },
+    {
+      "userId": "1517",
+      "role": "faculty",
+      "name": "Prof. Verma",
+      "room": "TCS-302"
+    },
+    {
+      "userId": "1518",
+      "role": "faculty",
+      "name": "Dr. Mehta",
+      "room": "TCS-307"
+    },
+    {
+      "userId": "1519",
+      "role": "faculty",
+      "name": "Prof. Iyer",
+      "room": "TMA-316"
+    },
+    {
+      "userId": "1520",
+      "role": "faculty",
+      "name": "Dr. Rao",
+      "room": "TOC-301"
+    },
+    {
+      "userId": "1521",
+      "role": "faculty",
+      "name": "Prof. Gupta",
+      "room": "XCS-301"
+    },
+    {
+      "userId": "1522",
+      "role": "faculty",
+      "name": "Dr. Khan",
+      "room": "UHV-301"
+    },
+    {
+      "userId": "1523",
+      "role": "faculty",
+      "name": "Prof. Nair",
+      "room": "TCS-351"
+    },
+    {
+      "userId": "1524",
+      "role": "faculty",
+      "name": "Dr. Singh",
+      "room": "TCS-392"
+    },
+    {
+      "userId": "1525",
+      "role": "faculty",
+      "name": "Prof. Joshi",
+      "room": "TCS-331"
+    },
+    {
+      "userId": "1526",
+      "role": "faculty",
+      "name": "Dr. Bose",
+      "room": "TCS-340"
+    },
+    {
+      "userId": "1527",
+      "role": "faculty",
+      "name": "Prof. Kapoor",
+      "room": "TCS-332"
+    }
+  ]
+}
