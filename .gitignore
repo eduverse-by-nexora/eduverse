@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 node_modules/
+=======
+gnode_modules/
+>>>>>>> 0611ba744c3283c4e4eb52525a3a3f5329facd3d
 .env
 certs/
 *.log
