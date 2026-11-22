@@ -1,4 +1,4 @@
-node_modules/
+gnode_modules/
 .env
 certs/
 *.log
